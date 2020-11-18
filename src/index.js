@@ -4,20 +4,21 @@ import { renderTodos, generateTodoDOM, generateSummaryDOM } from "./views"
 
 // Render initial todos - error
 
-let todos = getTodos()
-
 renderTodos()
 
 // Set up search text handler
 // // listens for input text changes and changes filters
 document.querySelector("#search-text").addEventListener("input", (e) => {
-  setFilters().searchText = e.target.value
+  filter.searchText = e.target.value
+  setFilters()
   renderTodos()
 })
 
 // // listens to checkbox - true or false
 document.querySelector("#completed-checkbox").addEventListener("change", (e) => {
-  setFilters().hideCompleted = e.target.checked
+  setFilters({
+    hideCompleted: e.target.checked
+  })
   renderTodos()
 })
 
@@ -26,7 +27,6 @@ document.querySelector("#completed-checkbox").addEventListener("change", (e) => 
 document.querySelector("#new-todo-text-form").addEventListener("submit", (e) => {
   const text = e.target.elements.text.value.trim()
   createTodo(text)
-  saveTodos(todos)
   renderTodos()
   e.target.elements.text.value = ""
 

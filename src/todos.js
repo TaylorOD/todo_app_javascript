@@ -6,16 +6,19 @@ let todos = []
 // // read existing notes from localstorage
 const loadTodos = () => {
   const todosJSON = localStorage.getItem("todos")
+
 // prevents the app from crashing if the data from local storage isnt being read correctly
   try {
-    return todosJSON ? JSON.parse(todosJSON) : []
+    todos = todosJSON ? JSON.parse(todosJSON) : []
   } catch (e) {
-    return []
+    todos = []
   }
 }
 
 // save todos to local storage
-const saveTodos = () => localStorage.setItem("todos", JSON.stringify(todos))
+const saveTodos = () => {
+  localStorage.setItem("todos", JSON.stringify(todos))
+}
 
 // Expose notes from module
 const getTodos = () => todos

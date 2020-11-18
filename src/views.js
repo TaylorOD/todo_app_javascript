@@ -48,7 +48,6 @@ const generateTodoDOM = (todo) => {
   checkbox.addEventListener("change", () => {
     toggleTodo(todo.id)
     saveTodos(todos)
-    renderTodos(todos, filters)
   })
 
 
@@ -70,7 +69,6 @@ const generateTodoDOM = (todo) => {
   removeButton.addEventListener("click", () => {
     removeTodo(todo.id)
     saveTodos(todos)
-    renderTodos(todos, filters)
   })
 
   return todoEl

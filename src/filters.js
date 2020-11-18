@@ -9,8 +9,13 @@ const getFilters = () => filters
 
 // Sets filters SearchText or Completed status
 const setFilters = (updates) => {
-  filters.searchText = updates.searchText
-  filters.hideCompleted = updates.hideCompleted
+
+  if (typeof updates.searchText === "string") {
+    filters.searchText = updates.searchText
+  }
+  if (typeof updates.hideCompleted === "boolean") {
+    filters.hideCompleted = updates.hideCompleted
+  }
 }
 
 // exporting filters
