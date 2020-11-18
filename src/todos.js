@@ -3,11 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 // Setup empty todos array
 let todos = []
 
-// read existing notes from localstorage
-// const loadTodos = () => {
-//   const notesJSON = localStorage.getItem("todos")
-// }
-
 // // read existing notes from localstorage
 const loadTodos = () => {
   const todosJSON = localStorage.getItem("todos")

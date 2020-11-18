@@ -1,15 +1,15 @@
 // "use strict"
 
-let todos = getSavedTodos()
+// let todos = getSavedTodos()
 
 // const filters = {
 //   searchText: "",
 //   hideCompleted: false
 // }
 
-renderTodos(todos, filters)
+// renderTodos(todos, filters)
 
-// listens for input text changes and changes filters
+// // listens for input text changes and changes filters
 // document.querySelector("#search-text").addEventListener("input", (e) => {
 //   filters.searchText = e.target.value
 //   renderTodos(todos, filters)
