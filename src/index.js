@@ -1,4 +1,4 @@
-import { setFilters } from "./filters"
+import { setFilters, getFilters } from "./filters"
 import { loadTodos, saveTodos, getTodos, createTodo, removeTodo, toggleTodo } from "./todos"
 
 

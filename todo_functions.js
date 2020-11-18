@@ -17,23 +17,23 @@
 //   localStorage.setItem("todos", JSON.stringify(todos))
 // }
 
-// remove Todo using X button
-const removeTodo = (id) => {
-  const todoIndex = todos.findIndex((todo) => todo.id === id)
+// // remove Todo using X button
+// const removeTodo = (id) => {
+//   const todoIndex = todos.findIndex((todo) => todo.id === id)
 
-  if (todoIndex > -1) {
-    todos.splice(todoIndex, 1)
-  }
-}
+//   if (todoIndex > -1) {
+//     todos.splice(todoIndex, 1)
+//   }
+// }
 
-// change if todo completed or not using checkbox
-const toggleCompleted = (id) => {
-  const todo = todos.find((todo) => todo.id === id)
+// // change if todo completed or not using checkbox
+// const toggleCompleted = (id) => {
+//   const todo = todos.find((todo) => todo.id === id)
 
-  if (todo) {
-    todo.completed = !todo.completed
-  }
-}
+//   if (todo) {
+//     todo.completed = !todo.completed
+//   }
+// }
 
 // Generate DOM Elements for todos
 const generateTodoDOM = (todo) => {

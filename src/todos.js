@@ -4,46 +4,56 @@ import moment from "moment"
 // Setup empty todos array
 let todos = []
 
-// loadTodos
-// Arguments: none
-// Return value: none
-
 // read existing notes from localstorage
 const loadTodos = () => localStorage.getItem("todos")
-
-// saveTodos
-// Arguments: none
-// Return value: none
 
 // save todos to local storage
 const saveTodos = () => localStorage.setItem("todos")
 
-// getTodos
-// Arguments: none
-// Return value: todos array
-
 // Expose notes from module
 const getTodos = () => notes
 
-
-// createTodo
-// Arguments: todo text
-// Return value: none
-
+// Create new todo with timestamp, ID, and input text body
 const createTodo = (todoText) => {
+  const id = uuidv4()
+  const timestamp = moment().valueOf()
+
+  todos.push({
+    id: id,
+    body: todoText,
+    createdAt: timestamp,
+  })
 
   saveTodos()
 }
-
 
 // removeTodo
 // Arguments: id of todo to remove
 // Return value: none
 
+// remove Todo using X button
+const removeTodo = (id) => {
+  const todoIndex = todos.findIndex((todo) => todo.id === id)
+
+  if (todoIndex > -1) {
+    todos.splice(todoIndex, 1)
+  }
+}
+
 // toggleTodo
 // Arguments: id of todo to toggle
 // Return value: none
 
-// Make sure to call loadTodos and setup the exports
+// change if todo completed or not using checkbox
+const toggleTodo = (id) => {
+  const todo = todos.find((todo) => todo.id === id)
 
+  if (todo) {
+    todo.completed = !todo.completed
+  }
+}
+
+todos = loadTodos()
+
+// Setup the exports
 export { loadTodos, saveTodos, getTodos, createTodo, removeTodo, toggleTodo }
