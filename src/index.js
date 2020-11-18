@@ -1,5 +1,5 @@
 import { setFilters } from "./filters"
-import { createTodo } from "./todos"
+import { createTodo, loadTodos } from "./todos"
 import { renderTodos } from "./views"
 
 // Render initial todos
@@ -38,6 +38,7 @@ document.querySelector("#new-todo-text-form").addEventListener("submit", (e) => 
 // sync edit and index title storage
 window.addEventListener("storage", (e) => {
   if (e.key === "todos") {
+    loadTodos()
     renderTodos()
   }
 })
