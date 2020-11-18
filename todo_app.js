@@ -2,18 +2,18 @@
 
 let todos = getSavedTodos()
 
-const filters = {
-  searchText: "",
-  hideCompleted: false
-}
+// const filters = {
+//   searchText: "",
+//   hideCompleted: false
+// }
 
 renderTodos(todos, filters)
 
 // listens for input text changes and changes filters
-document.querySelector("#search-text").addEventListener("input", (e) => {
-  filters.searchText = e.target.value
-  renderTodos(todos, filters)
-})
+// document.querySelector("#search-text").addEventListener("input", (e) => {
+//   filters.searchText = e.target.value
+//   renderTodos(todos, filters)
+// })
 
 // add new todo - listens to sub box
 document.querySelector("#new-todo-text-form").addEventListener("submit", (e) => {
@@ -35,8 +35,8 @@ document.querySelector("#new-todo-text-form").addEventListener("submit", (e) => 
   }
 })
 
-// listens to checkbox - true or false
-document.querySelector("#completed-checkbox").addEventListener("change", (e) => {
-  filters.hideCompleted = e.target.checked
-  renderTodos(todos, filters)
-})
+// // listens to checkbox - true or false
+// document.querySelector("#completed-checkbox").addEventListener("change", (e) => {
+//   filters.hideCompleted = e.target.checked
+//   renderTodos(todos, filters)
+// })
