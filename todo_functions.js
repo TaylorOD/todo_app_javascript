@@ -1,21 +1,21 @@
 /* global todos, filters */
-"use strict"
+// "use strict"
 
-// read existing notes from localstorage
-const getSavedTodos = () => {
-  const todosJSON = localStorage.getItem("todos")
-// prevents the app from crashing if the data from local storage isnt being read correctly
-  try {
-    return todosJSON ? JSON.parse(todosJSON) : []
-  } catch (e) {
-    return []
-  }
-}
+// // read existing notes from localstorage
+// const getSavedTodos = () => {
+//   const todosJSON = localStorage.getItem("todos")
+// // prevents the app from crashing if the data from local storage isnt being read correctly
+//   try {
+//     return todosJSON ? JSON.parse(todosJSON) : []
+//   } catch (e) {
+//     return []
+//   }
+// }
 
-// save todos to local storage
-const saveTodos = (todos) => {
-  localStorage.setItem("todos", JSON.stringify(todos))
-}
+// // save todos to local storage
+// const saveTodos = (todos) => {
+//   localStorage.setItem("todos", JSON.stringify(todos))
+// }
 
 // remove Todo using X button
 const removeTodo = (id) => {
