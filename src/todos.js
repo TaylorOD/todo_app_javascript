@@ -1,48 +1,51 @@
 import { v4 as uuidv4 } from 'uuid';
-import moment from "moment"
 
 // Setup empty todos array
 let todos = []
 
 // read existing notes from localstorage
-const loadTodos = () => localStorage.getItem("todos")
+// const loadTodos = () => {
+//   const notesJSON = localStorage.getItem("todos")
+// }
+
+// // read existing notes from localstorage
+const loadTodos = () => {
+  const todosJSON = localStorage.getItem("todos")
+// prevents the app from crashing if the data from local storage isnt being read correctly
+  try {
+    return todosJSON ? JSON.parse(todosJSON) : []
+  } catch (e) {
+    return []
+  }
+}
 
 // save todos to local storage
-const saveTodos = () => localStorage.setItem("todos")
+const saveTodos = () => localStorage.setItem("todos", JSON.stringify(todos))
 
 // Expose notes from module
-const getTodos = () => notes
+const getTodos = () => todos
 
 // Create new todo with timestamp, ID, and input text body
 const createTodo = (todoText) => {
   const id = uuidv4()
-  const timestamp = moment().valueOf()
 
   todos.push({
     id: id,
-    body: todoText,
-    createdAt: timestamp,
+    text: todoText,
+    completed: false,
   })
-
   saveTodos()
 }
-
-// removeTodo
-// Arguments: id of todo to remove
-// Return value: none
 
 // remove Todo using X button
 const removeTodo = (id) => {
   const todoIndex = todos.findIndex((todo) => todo.id === id)
-
+  
   if (todoIndex > -1) {
     todos.splice(todoIndex, 1)
+    saveTodos()
   }
 }
-
-// toggleTodo
-// Arguments: id of todo to toggle
-// Return value: none
 
 // change if todo completed or not using checkbox
 const toggleTodo = (id) => {
@@ -50,6 +53,7 @@ const toggleTodo = (id) => {
 
   if (todo) {
     todo.completed = !todo.completed
+    saveTodos()
   }
 }
 
