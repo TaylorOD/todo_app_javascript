@@ -1,16 +1,16 @@
-import { setFilters, getFilters } from "./filters"
-import { loadTodos, saveTodos, getTodos, createTodo, removeTodo, toggleTodo } from "./todos"
-import { renderTodos, generateTodoDOM, generateSummaryDOM } from "./views"
+import { setFilters } from "./filters"
+import { createTodo } from "./todos"
+import { renderTodos } from "./views"
 
-// Render initial todos - error
-
+// Render initial todos
 renderTodos()
 
 // Set up search text handler
 // // listens for input text changes and changes filters
 document.querySelector("#search-text").addEventListener("input", (e) => {
-  filter.searchText = e.target.value
-  setFilters()
+  setFilters({
+    searchText: e.target.value
+  })
   renderTodos()
 })
 
@@ -26,14 +26,15 @@ document.querySelector("#completed-checkbox").addEventListener("change", (e) => 
 // listens for new todo text and creates new note
 document.querySelector("#new-todo-text-form").addEventListener("submit", (e) => {
   const text = e.target.elements.text.value.trim()
-  createTodo(text)
-  renderTodos()
-  e.target.elements.text.value = ""
 
+  e.preventDefault()
+  if (text.length > 0) {
+    createTodo(text)
+    renderTodos()
+    e.target.elements.text.value = ""
+  }
 })
 
-
-// Bonus: Add a watcher for local storage
 // sync edit and index title storage
 window.addEventListener("storage", (e) => {
   if (e.key === "todos") {

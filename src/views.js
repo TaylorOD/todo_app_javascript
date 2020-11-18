@@ -4,10 +4,10 @@ import { getFilters } from "./filters"
 // Render application todos
 const renderTodos = () => {
   
-  const filters = getFilters()
-  const todos = getTodos()
 
-  const filteredTodos = todos.filter((todo) => {
+  const filteredTodos = getTodos().filter((todo) => {
+    const todoEl = document.querySelector("#todos")
+    const filters = getFilters()
     const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
     const hideCompletedMatch = !filters.hideCompleted || !todo.completed
 
@@ -47,7 +47,7 @@ const generateTodoDOM = (todo) => {
   containerEl.appendChild(checkbox)
   checkbox.addEventListener("change", () => {
     toggleTodo(todo.id)
-    saveTodos(todos)
+    renderTodos()
   })
 
 
@@ -68,7 +68,7 @@ const generateTodoDOM = (todo) => {
   todoEl.appendChild(removeButton)
   removeButton.addEventListener("click", () => {
     removeTodo(todo.id)
-    saveTodos(todos)
+    renderTodos()
   })
 
   return todoEl
