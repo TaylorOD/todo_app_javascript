@@ -14,7 +14,7 @@
 ### Getting Started/Requirements/Prerequisites/Dependencies
 Include any essential instructions for:
 - Getting it: download or clone the project
-- Running it: use live-server to open the index.html file or visit todo-app-javascript-td.surge.sh
+- Running it: use live-server, npm run start, or visit https://todo-app-javascript-td.netlify.app
 
 ### Contributing
 - Contributor Guidelines: Please feel free to create a pull request if you have a change to suggest
