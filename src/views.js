@@ -1,14 +1,16 @@
-import { saveTodos, getTodos, removeTodo, toggleTodo } from "./todos"
+import { getTodos, removeTodo, toggleTodo } from "./todos"
 import { getFilters } from "./filters"
 
 // Render application todos
 const renderTodos = () => {
   
+  const todoEl = document.querySelector("#todos")
+  const { hideCompleted, searchText } = getFilters()
+
+
   const filteredTodos = getTodos().filter((todo) => {
-    const todoEl = document.querySelector("#todos")
-    const filters = getFilters()
-    const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-    const hideCompletedMatch = !filters.hideCompleted || !todo.completed
+    const searchTextMatch = todo.text.toLowerCase().includes(searchText.toLowerCase())
+    const hideCompletedMatch = !hideCompleted || !todo.completed
 
     return searchTextMatch && hideCompletedMatch
   })
