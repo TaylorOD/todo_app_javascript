@@ -4,7 +4,6 @@ import { getFilters } from "./filters"
 // Render application todos
 const renderTodos = () => {
   
-
   const filteredTodos = getTodos().filter((todo) => {
     const todoEl = document.querySelector("#todos")
     const filters = getFilters()
@@ -17,8 +16,8 @@ const renderTodos = () => {
   // return incompleted todos
   const incompleteTodo = filteredTodos.filter((todo) => !todo.completed)
 
-  document.querySelector("#todos").innerHTML = ""
-  document.querySelector("#todos").appendChild(generateSummaryDOM(incompleteTodo))
+  todoEl.innerHTML = ""
+  todoEl.appendChild(generateSummaryDOM(incompleteTodo))
 
   if (filteredTodos.length > 0) {
     filteredTodos.forEach((todo) => {

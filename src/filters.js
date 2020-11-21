@@ -8,13 +8,13 @@ const filters = {
 const getFilters = () => filters
 
 // Sets filters SearchText or Completed status
-const setFilters = (updates) => {
+const setFilters = ({ searchText, hideCompleted }) => {
 
-  if (typeof updates.searchText === "string") {
-    filters.searchText = updates.searchText
+  if (typeof searchText === "string") {
+    filters.searchText = searchText
   }
-  if (typeof updates.hideCompleted === "boolean") {
-    filters.hideCompleted = updates.hideCompleted
+  if (typeof hideCompleted === "boolean") {
+    filters.hideCompleted = hideCompleted
   }
 }
 
